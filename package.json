@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "01": "tsx 01.ts",
+    "01:watch": "tsx watch 01.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
