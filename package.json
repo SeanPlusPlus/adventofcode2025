@@ -1,0 +1,16 @@
+{
+  "name": "adventofcode2025",
+  "type": "module",
+  "scripts": {
+    "01": "tsx 01.ts",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
