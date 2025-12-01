@@ -20,18 +20,16 @@ for (var i = 0; i < input.length; i++) {
   const amount = parseInt(rotate + input[i].slice(1), 10) % 100
 
   if (amount < 0) {
-    // LEFT
+    // left wrap
     if (Math.abs(amount) > pos) {
-      // left wrap
       pos = pos + amount + DIAL
     } else {
       // simple turn left
       pos = pos + amount
     }
   } else {
-    // RIGHT
+    // right wrap
     if (pos + amount >= DIAL) {
-      // right wrap
       pos = pos + amount - DIAL
     } else {
       // simple turn right
