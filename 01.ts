@@ -1,5 +1,8 @@
 import * as fs from 'fs'
 
+// enable logging
+const LOG = true
+
 // const fname = '01.input.txt'
 const fname = '01.input.test.txt'
 
@@ -13,24 +16,47 @@ for (let i = 0; i < DIAL; i++) {
   nums.push(i)
 }
 
+// number of times dial is pointed at zero
+let zeroCount = 0
+
 let pos = 50
+LOG && console.log('Starting position:', pos)
 
 for (var i = 0; i < input.length; i++) {
   const rotate = input[i].charAt(0) === 'L' ? '-' : '+'
   const amount = parseInt(rotate + input[i].slice(1), 10)
-  console.log(i, pos, amount)
 
   // wrap left
   if (amount < 0 && Math.abs(amount) > pos) {
-    console.log('wrapping left')
     pos = DIAL + (pos + amount)
+    if (pos === 0) zeroCount++
+    LOG && console.log(i, pos, amount, 'left wrap')
     continue
   }
 
   // move left no wrap
   if (amount < 0) {
-    console.log('moving left no wrap')
     pos = pos + amount
+    if (pos === 0) zeroCount++
+    LOG && console.log(i, pos, amount, 'left no wrap')
+    continue
+  }
+
+  // move right wrap
+  if (amount > 0 && pos + amount >= DIAL) {
+    pos = pos + amount - DIAL
+    if (pos === 0) zeroCount++
+    LOG && console.log(i, pos, amount, 'right wrap')
+    continue
+  }
+
+  // move right no wrap
+  if (amount > 0) {
+    pos = pos + amount
+    if (pos === 0) zeroCount++
+    LOG && console.log(i, pos, amount, 'right no wrap')
     continue
   }
 }
+
+console.log('Zero count:', zeroCount)
