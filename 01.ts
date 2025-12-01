@@ -6,10 +6,14 @@ const fname = '01.input.test.txt'
 // read each line from 01.input.txt and save each as an element in an array
 const input = fs.readFileSync(fname, 'utf-8').split('\n')
 
-console.log(input.length)
-console.log('1. ' + input[0])
-console.log('2. ' + input[1])
-console.log('3. ' + input[2])
-console.log('l - 3. ' + input[input.length - 3])
-console.log('l - 2. ' + input[input.length - 2])
-console.log('l - 1. ' + input[input.length - 1])
+// create an array of integers from 0 to 99
+const arr: number[] = []
+for (let i = 0; i < 100; i++) {
+  arr.push(i)
+}
+
+for (var i = 0; i < input.length; i++) {
+  const rotate = input[i].charAt(0) === 'L' ? '-' : '+'
+  const amount = parseInt(rotate + input[i].slice(1), 10)
+  console.log(i, input[i], amount)
+}
