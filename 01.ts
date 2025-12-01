@@ -26,4 +26,11 @@ for (var i = 0; i < input.length; i++) {
     pos = DIAL + (pos + amount)
     continue
   }
+
+  // move left no wrap
+  if (amount < 0) {
+    console.log('moving left no wrap')
+    pos = pos + amount
+    continue
+  }
 }
