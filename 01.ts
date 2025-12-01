@@ -7,13 +7,23 @@ const fname = '01.input.test.txt'
 const input = fs.readFileSync(fname, 'utf-8').split('\n')
 
 // create an array of integers from 0 to 99
-const arr: number[] = []
-for (let i = 0; i < 100; i++) {
-  arr.push(i)
+const DIAL = 100
+const nums: number[] = []
+for (let i = 0; i < DIAL; i++) {
+  nums.push(i)
 }
+
+let pos = 50
 
 for (var i = 0; i < input.length; i++) {
   const rotate = input[i].charAt(0) === 'L' ? '-' : '+'
   const amount = parseInt(rotate + input[i].slice(1), 10)
-  console.log(i, input[i], amount)
+  console.log(i, pos, amount)
+
+  // wrap left
+  if (amount < 0 && Math.abs(amount) > pos) {
+    console.log('wrapping left')
+    pos = DIAL + (pos + amount)
+    continue
+  }
 }
