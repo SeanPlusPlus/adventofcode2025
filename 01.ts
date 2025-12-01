@@ -23,8 +23,9 @@ for (var i = 0; i < input.length; i++) {
     // LEFT
     if (Math.abs(amount) > pos) {
       // left wrap
-      pos = DIAL + (pos + amount)
+      pos = pos + amount + DIAL
     } else {
+      // simple turn left
       pos = pos + amount
     }
   } else {
@@ -33,6 +34,7 @@ for (var i = 0; i < input.length; i++) {
       // right wrap
       pos = pos + amount - DIAL
     } else {
+      // simple turn right
       pos = pos + amount
     }
   }
@@ -40,4 +42,4 @@ for (var i = 0; i < input.length; i++) {
   if (pos === 0) zeroCount++
 }
 
-console.log('Zero count:', zeroCount)
+console.log('Answer:', zeroCount)
